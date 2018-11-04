@@ -11,7 +11,7 @@ VL53L0X ([general specification](https://raw.github.com/d2r2/go-vl53l0x/master/d
 
 Sensor functionality is based on laser diode emission with following photodetector signal registration. Average time duration between emission and registration is a "time-of-flight", which translated to range distance.
 
-Here is a library written in [Go programming language](https://golang.org/) for Raspberry PI and counterparts, which gives you in the output measured range value (making all necessary i2c-bus interacting and values computing). This code is an adaptation and translation of well-formed C++ library to Golang taken from https://github.com/pololu/vl53l0x-arduino.
+Here is a library written in [Go programming language](https://golang.org/) for Raspberry PI and counterparts, which gives you in the output measured range value (making all necessary i2c-bus interacting and values computing). This library is an adaptation and translation of well-formed C++ code to Golang, taken from https://github.com/pololu/vl53l0x-arduino.
 
 
 Golang usage
