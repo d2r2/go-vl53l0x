@@ -318,6 +318,10 @@ func (v *Vl53l0x) Reset(i2c *i2c.I2C) error {
 	// Wait for some time
 	err = v.waitUntilOrTimeout(i2c, IDENTIFICATION_MODEL_ID,
 		func(checkReg byte, err error) (bool, error) {
+			// Skip error like "read /dev/i2c-x: no such device or address"
+			// for a while, because sensor in reboot has temporary
+			// no connection to I2C-bus. So, that is why we are
+			// returning nil instead of err, suppressing this.
 			return checkReg != 0, nil
 		})
 	if err != nil {
