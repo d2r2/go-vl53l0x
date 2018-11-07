@@ -1,5 +1,5 @@
-VL53L0X time-of-flight ranging and gesture detection sensor
-===========================================================
+VL53L0X time-of-flight ranging sensor
+=====================================
 
 [![Build Status](https://travis-ci.org/d2r2/go-vl53l0x.svg?branch=master)](https://travis-ci.org/d2r2/go-vl53l0x)
 [![Go Report Card](https://goreportcard.com/badge/github.com/d2r2/go-vl53l0x)](https://goreportcard.com/report/github.com/d2r2/go-vl53l0x)
@@ -7,7 +7,7 @@ VL53L0X time-of-flight ranging and gesture detection sensor
 [![MIT License](http://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 VL53L0X ([general specification](https://raw.github.com/d2r2/go-vl53l0x/master/docs/vl53l0x.pdf), [native C code API specification](https://raw.github.com/d2r2/go-vl53l0x/master/docs/en.DM00279088.pdf)) is a world’s smallest time-of-flight ranging and gesture detection sensor from STMicroelectronics. Easily integrated with Arduino and Raspberry PI via i2c communication interface:
-![image](https://raw.github.com/d2r2/go-vl53l0x/master/docs/SHT3X.jpg)
+![image](https://raw.github.com/d2r2/go-vl53l0x/master/docs/cjvl53l0xv2.jpg)
 
 Sensor functionality is based on laser diode emission with following photodetector signal registration. Average time duration between emission and registration is a "time-of-flight", which translated to range distance.
 
