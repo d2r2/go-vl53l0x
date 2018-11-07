@@ -1,7 +1,5 @@
-package vl53l0x
-
 //--------------------------------------------------------------------------------------------------
-
+//
 // This code is an adaptation and translation of well-formed C++ library to GOLANG for the distance
 // measure sensor's family VL53L0X taken from https://github.com/pololu/vl53l0x-arduino:
 //      https://github.com/pololu/vl53l0x-arduino/blob/master/VL53L0X.cpp
@@ -34,6 +32,8 @@ package vl53l0x
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 //--------------------------------------------------------------------------------------------------
+
+package vl53l0x
 
 import (
 	"errors"
