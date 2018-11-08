@@ -9,9 +9,11 @@ VL53L0X time-of-flight ranging sensor
 VL53L0X ([general specification](https://raw.github.com/d2r2/go-vl53l0x/master/docs/vl53l0x.pdf), [native C code API specification](https://raw.github.com/d2r2/go-vl53l0x/master/docs/en.DM00279088.pdf)) is a world’s smallest time-of-flight ranging and gesture detection sensor from STMicroelectronics. Easily integrated with Arduino and Raspberry PI via i2c communication interface:
 ![image](https://raw.github.com/d2r2/go-vl53l0x/master/docs/cjvl53l0xv2.jpg)
 
-Sensor functionality is based on laser diode emission with following photodetector signal registration. Average time duration between emission and registration is a "time-of-flight", which translated to range distance.
+Sensor functionality is based on laser diode emission with following photodetector signal registration. Average time duration between emission and registration is a "time-of-flight", which translates to range distance.
 
-Here is a library written in [Go programming language](https://golang.org/) for Raspberry PI and counterparts, which gives you in the output measured range value (making all necessary i2c-bus interacting and values computing). This library is an adaptation and translation of well-formed C++ code to Golang, taken from https://github.com/pololu/vl53l0x-arduino.
+Here is a library written in [Go programming language](https://golang.org/) for Raspberry PI and counterparts, which gives you in the output measured range value (making all necessary i2c-bus interacting and values computing).
+
+This library is an adaptation and translation of well-formed C++ code written by www.pololu.com to Golang, taken from https://github.com/pololu/vl53l0x-arduino.
 
 
 Golang usage
@@ -28,11 +30,11 @@ func main() {
     defer i2c.Close()
 
     sensor := vl53l0x.NewVl53l0x()
+    // It's highly recommended to reset sensor each time before repeated initialization.
     err = sensor.Reset(i2c)
     if err != nil {
         log.Fatal(err)
     }
-    // It's highly recommended to reset sensor before repeated initialization.
     // By default, sensor initialized with "RegularRange" and "RegularAccuracy" parameters.
     err = sensor.Init(i2c)
     if err != nil {
