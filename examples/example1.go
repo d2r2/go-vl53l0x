@@ -2,6 +2,8 @@ package main
 
 import (
 	"context"
+	"os"
+	"syscall"
 
 	i2c "github.com/d2r2/go-i2c"
 	logger "github.com/d2r2/go-logger"
@@ -85,12 +87,18 @@ func main() {
 	if err != nil {
 		lg.Fatalf("Can't start continious measures: %s", err)
 	}
+	// create context with cancellation possibility
+	ctx, cancel := context.WithCancel(context.Background())
+	// use done channel as a trigger to exit from signal waiting goroutine
 	done := make(chan struct{})
 	defer close(done)
-	// Create context with cancelation possibility.
-	ctx, cancel := context.WithCancel(context.Background())
-	// Run goroutine waiting for OS termantion events, including keyboard Ctrl+C.
-	shell.CloseContextOnKillSignal(cancel, done)
+	// build actual signals list to control
+	signals := []os.Signal{os.Kill, os.Interrupt}
+	if shell.IsLinuxMacOSFreeBSD() {
+		signals = append(signals, syscall.SIGTERM)
+	}
+	// run goroutine waiting for OS termination events, including keyboard Ctrl+C
+	shell.CloseContextOnSignals(cancel, done, signals...)
 
 	for i := 0; i < times; i++ {
 		rng, err = sensor.ReadRangeContinuousMillimeters(i2c)
