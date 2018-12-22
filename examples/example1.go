@@ -85,7 +85,7 @@ func main() {
 	lg.Infof("Made measurement each %d milliseconds, %d times", freq, times)
 	err = sensor.StartContinuous(i2c, freq)
 	if err != nil {
-		lg.Fatalf("Can't start continious measures: %s", err)
+		lg.Fatalf("Can't start continuous measures: %s", err)
 	}
 	// create context with cancellation possibility
 	ctx, cancel := context.WithCancel(context.Background())
@@ -119,7 +119,7 @@ func main() {
 	}
 	err = sensor.StopContinuous(i2c)
 	if err != nil {
-		lg.Fatalf("Error stopping continious measures: %s", err)
+		lg.Fatalf("Error stopping continuous measures: %s", err)
 	}
 
 	lg.Notify("**********************************************************************************************")
